@@ -3,8 +3,10 @@ package com.webApp.Ecommerce.controller;
 import com.webApp.Ecommerce.dto.OrderDTO;
 import com.webApp.Ecommerce.entity.OrderRequest;
 import com.webApp.Ecommerce.entity.Orders;
+import com.webApp.Ecommerce.entity.Product;
 import com.webApp.Ecommerce.entity.User;
 import com.webApp.Ecommerce.service.OrderService;
+import com.webApp.Ecommerce.service.ProductService;
 import com.webApp.Ecommerce.service.UserService;
 import org.hibernate.query.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class Controller {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private ProductService productService;
 
     @PostMapping("/user/register")
     public User registerUser(@RequestBody User user){
@@ -48,5 +53,18 @@ public class Controller {
         return orderService.getOrdersByUserId(userId);
     }
 
+    @GetMapping("/product/getAllProduct")
+    public List<Product> getAllProduct(){
+        return productService.getAllProduct();
+    }
 
+    @GetMapping("/product/getProductByCategory")
+    public List<Product> getProductByCategory(@RequestParam String category){
+        return productService.getProductByCategory(category);
+    }
+
+    @PostMapping("/product/addProduct")
+    public Product addProduct(@RequestBody Product product){
+        return productService.addProduct(product);
+    }
 }

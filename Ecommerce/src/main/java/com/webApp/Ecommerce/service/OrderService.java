@@ -6,14 +6,14 @@ import com.webApp.Ecommerce.entity.*;
 import com.webApp.Ecommerce.repository.OrdersRepo;
 import com.webApp.Ecommerce.repository.ProductRepo;
 import com.webApp.Ecommerce.repository.UserRepo;
-import org.hibernate.query.Order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.stereotype.Service;
+
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Service
 public class OrderService {
 
     @Autowired
